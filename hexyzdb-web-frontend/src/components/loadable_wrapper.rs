@@ -11,8 +11,7 @@ use {
 };
 
 /// Loadable wrapper
-#[dynatos_builder::builder]
-pub fn LoadableWrapper<L>(ctx: &DynatosWebCtx, loadable: L) -> web_sys::HtmlElement
+pub fn loadable_wrapper<L>(ctx: &DynatosWebCtx, loadable: &L) -> web_sys::HtmlElement
 where
 	L: ToLoadableChild,
 {
@@ -24,25 +23,6 @@ where
 		},
 		Loadable::Loaded(view) => view,
 	})
-}
-
-impl LoadableWrapper {
-	/// Creates a loadable wrapper from a loadable
-	pub fn from_loadable<L: ToLoadableChild>(
-		ctx: &DynatosWebCtx,
-		loadable: Loadable<L, AppError>,
-	) -> web_sys::HtmlElement {
-		Self::builder().ctx(ctx).loadable(loadable).build()
-	}
-
-	/// Creates a loadable wrapper from a dynamic loadable function.
-	pub fn _from_dyn_loadable<L, F>(ctx: &DynatosWebCtx, loadable: F) -> impl Fn() -> web_sys::HtmlElement
-	where
-		F: Fn() -> Loadable<L, AppError>,
-		L: ToLoadableChild,
-	{
-		move || Self::from_loadable(ctx, loadable())
-	}
 }
 
 /// Extension trait to add a reactive `LoadableWrapper` child to a node.
@@ -57,7 +37,7 @@ pub impl web_sys::Node {
 		self.add_dyn_child(
 			ctx,
 			#[cloned(ctx)]
-			move || loadable.with_loadable(|loadable| LoadableWrapper::from_loadable(&ctx, loadable)),
+			move || self::loadable_wrapper(&ctx, &loadable),
 		);
 	}
 
@@ -75,7 +55,7 @@ pub impl web_sys::Node {
 		impl<F: ToLoadableChildren> WithDynNodes for Adapter<F> {
 			fn with_nodes(&self, mut f: impl FnMut(web_sys::Node)) {
 				self.loadables
-					.with_loadables(|loadable| f(LoadableWrapper::from_loadable(&self.ctx, loadable).into()));
+					.with_loadables(|loadable| f(self::loadable_wrapper(&self.ctx, &loadable).into()));
 			}
 		}
 

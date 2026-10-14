@@ -1180,7 +1180,6 @@ dependencies = [
  "build-data",
  "console_error_panic_hook",
  "derive_more",
- "dynatos-builder",
  "dynatos-loadable",
  "dynatos-reactive",
  "dynatos-web",

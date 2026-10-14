@@ -10,7 +10,6 @@ dhexyzf-build-data = { workspace = true }
 app-error                = { workspace = true }
 console_error_panic_hook = { workspace = true }
 derive_more              = { features = ["full"], workspace = true }
-dynatos-builder          = { workspace = true }
 dynatos-loadable         = { workspace = true }
 dynatos-reactive         = { workspace = true }
 dynatos-web              = { workspace = true }
