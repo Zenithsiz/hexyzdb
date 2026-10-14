@@ -32,7 +32,7 @@ html {
 
 	/* Then set the font size and line-height for the root. */
 	font-size: 1em;
-	line-height: 1.5;
+	line-height: 1;
 }
 
 /* The body should occupy the full screen, with any overflow clipping. */
@@ -55,10 +55,9 @@ div {
 	flex-grow: 1;
 }
 
-/* Tables shouldn't have any built-in spacing */
+/* Tables should collapse borders by default so we can use borders */
 table {
-	border-collapse: separate;
-	border-spacing: 0;
+	border-collapse: collapse;
 }
 
 /* No underlines on `<a>` */

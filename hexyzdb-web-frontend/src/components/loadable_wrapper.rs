@@ -141,6 +141,18 @@ where
 	}
 }
 
+impl<N> ToLoadableChild for Result<N, AppError>
+where
+	N: ToLoadableChild,
+{
+	fn with_loadable<O>(&self, f: impl FnOnce(Loadable<web_sys::HtmlElement, AppError>) -> O) -> O {
+		match self.as_ref() {
+			Err(err) => f(Loadable::Err(err.clone())),
+			Ok(value) => value.with_loadable(f),
+		}
+	}
+}
+
 /// Types that may be used for [`NodeWithDynLoadableChild`]
 pub trait ToLoadableChildren {
 	/// Uses the inner loadable types

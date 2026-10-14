@@ -1,6 +1,6 @@
 //! hexyzdb web
 
-#![feature(stmt_expr_attributes, proc_macro_hygiene, type_alias_impl_trait)]
+#![feature(stmt_expr_attributes, proc_macro_hygiene, type_alias_impl_trait, try_blocks)]
 
 mod components;
 mod data;
