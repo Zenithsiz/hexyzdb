@@ -1,0 +1,5 @@
+.items-page {
+	& > ul {
+		overflow-y: scroll;
+	}
+}

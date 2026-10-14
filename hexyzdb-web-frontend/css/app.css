@@ -1,0 +1,84 @@
+:root {
+	/* Background */
+	--color-bg: #000000;
+
+	/* Background steps */
+	--color-bg-step: 0.03;
+
+	--color-bg-dark1: oklch(from var(--color-bg) calc(l - 1 * var(--color-bg-step)) c h);
+	--color-bg-dark2: oklch(from var(--color-bg) calc(l - 2 * var(--color-bg-step)) c h);
+	--color-bg-dark3: oklch(from var(--color-bg) calc(l - 3 * var(--color-bg-step)) c h);
+
+	--color-bg-light1: oklch(from var(--color-bg) calc(l + 1 * var(--color-bg-step)) c h);
+	--color-bg-light2: oklch(from var(--color-bg) calc(l + 2 * var(--color-bg-step)) c h);
+	--color-bg-light3: oklch(from var(--color-bg) calc(l + 3 * var(--color-bg-step)) c h);
+
+	/* Text */
+	--color-text: #acacac;
+}
+
+body {
+	color: var(--color-text);
+
+	background-color: var(--color-bg);
+	background-image: url('/static/images/background.png');
+	background-size: cover;
+}
+
+a {
+	color: #b0b0b0;
+
+	&:hover {
+		color: #a52a2a;
+	}
+
+	&:disabled {
+		color: #505050;
+		cursor: not-allowed;
+	}
+}
+
+.app {
+	--padding: 0.2rem;
+
+	--header-ratio: 0.1;
+	--sidebar-ratio: 0.15;
+
+	--background-color: #000000c0;
+
+	& > .header {
+		flex-grow: calc(var(--header-ratio) / (1 - var(--header-ratio)));
+
+		flex-direction: row;
+
+		background-color: var(--background-color);
+		background-clip: content-box;
+
+		padding: var(--padding);
+
+		& > .logo {
+			width: fit-content;
+		}
+	}
+
+	& > .body {
+		flex-direction: row;
+
+		& > .sidebar {
+			flex-grow: calc(var(--sidebar-ratio) / (1 - var(--sidebar-ratio)));
+
+			background-color: var(--background-color);
+			background-clip: content-box;
+
+			padding: var(--padding);
+		}
+
+		& > .content {
+			background-color: var(--background-color);
+			background-clip: content-box;
+
+			padding-left: var(--padding);
+			padding-top: var(--padding);
+		}
+	}
+}

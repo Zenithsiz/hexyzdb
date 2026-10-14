@@ -1,0 +1,25 @@
+rule frontend_run {
+	exec "trunk" "serve"
+		"--config" "hexyzdb-web-frontend/Trunk.toml";
+}
+
+rule frontend_build {
+	exec "trunk" "build"
+		"--release"
+		"--config" "hexyzdb-web-frontend/Trunk.toml";
+}
+
+rule frontend_deploy {
+	dep rule frontend_build;
+
+	exec "rsync"
+		"--recursive"
+		"--compress"
+		"--verbose"
+		"--delete"
+		"--mkpath"
+		"hexyzdb-web-frontend/dist/"
+		"{remote}:{remote_www_path}/";
+
+	exec "ssh" remote "chown -R hexyzdb:hexyzdb '{remote_www_path}' && chmod -R 1775 '{remote_www_path}'";
+}

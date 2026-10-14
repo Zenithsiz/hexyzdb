@@ -1,0 +1,12 @@
+[package]
+name    = "hexyzdb-web-dto"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+serde = { features = ["derive"], workspace = true }
+url   = { features = ["serde"], workspace = true }
+
+[lints]
+workspace = true

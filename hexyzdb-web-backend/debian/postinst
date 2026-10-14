@@ -1,0 +1,21 @@
+#!/bin/env sh
+
+set -e
+
+if [ "$1" = "configure" ]; then
+	# Add the user if it doesn't exist
+	if ! getent passwd "hexyzdb" > /dev/null; then
+		adduser \
+			--system \
+			--home "/var/lib/hexyzdb" \
+			--group \
+			"hexyzdb"
+	fi
+
+	# Create directories
+	install --directory -m 0775 -o "hexyzdb" -g "hexyzdb" "/etc/hexyzdb"
+	install --directory -m 0775 -o "hexyzdb" -g "hexyzdb" "/var/lib/hexyzdb"
+	install --directory -m 0775 -o "hexyzdb" -g "hexyzdb" "/var/cache/hexyzdb"
+fi
+
+#DEBHELPER#

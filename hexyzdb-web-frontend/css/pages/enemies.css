@@ -1,0 +1,180 @@
+.enemies-page {
+	overflow: scroll;
+
+	& > table {
+		border-collapse: collapse;
+
+		& > thead {
+			& > tr {
+				& > th {
+					position: sticky;
+					top: 0;
+
+					background-color: #000000;
+				}
+			}
+		}
+
+		& > tbody {
+			& > tr {
+				border-bottom: 0.1rem solid #ffffff;
+
+				& > .icon {
+					& > a {
+						display: inline-block;
+						& > img {
+							width: 6rem;
+						}
+					}
+				}
+
+				& > .name {
+					font-size: 2rem;
+					text-align: center;
+				}
+
+				& > .stats > div {
+					display: grid;
+					grid-auto-flow: row;
+					grid-template-rows: repeat(5, 3rem);
+					grid-template-columns: repeat(2, 6rem);
+
+					padding-right: 1rem;
+
+					& > .stat {
+						flex-direction: column;
+
+						& > .name {
+							height: 1rem;
+
+							font-size: 1rem;
+							line-height: 1rem;
+							font-weight: 900;
+
+							overflow: visible;
+						}
+
+						& > .value {
+							height: 2rem;
+
+							text-align: right;
+
+							font-size: 2rem;
+							line-height: 2rem;
+						}
+					}
+				}
+
+				& > .res > div {
+					display: grid;
+					grid-auto-flow: row;
+					grid-template-rows: repeat(5, 3rem);
+					grid-template-columns: repeat(2, 6rem);
+
+					padding-right: 1rem;
+
+					& > .res {
+						flex-direction: column;
+
+						width: 6rem;
+						height: 3rem;
+
+						& > .icon-name {
+							flex-direction: row;
+
+							height: 1rem;
+
+							overflow: visible;
+
+							& > .icon {
+								height: 1rem;
+								aspect-ratio: 1;
+							}
+
+							& > .name {
+								font-size: 1rem;
+								line-height: 1rem;
+								font-weight: 900;
+
+								overflow: visible;
+							}
+						}
+
+						& > .value {
+							text-align: right;
+
+							font-size: 2rem;
+							line-height: 2rem;
+						}
+					}
+				}
+
+				& > .drops > div {
+					display: grid;
+					grid-auto-flow: row;
+					grid-template-rows: repeat(5, 3rem);
+					grid-template-columns: repeat(2, 8rem);
+
+					& > .drop {
+						flex-direction: column;
+
+						& > .icon-name {
+							flex-direction: row;
+
+							height: 1rem;
+
+							overflow: visible;
+
+							& > .icon {
+								height: 1rem;
+								aspect-ratio: 1;
+							}
+
+							& > .name {
+								font-size: 1rem;
+								line-height: 1rem;
+								font-weight: 900;
+
+								overflow: visible;
+							}
+						}
+
+						& > .item {
+							flex-grow: 2;
+							flex-direction: column;
+
+							height: 2rem;
+
+							overflow-y: visible;
+							& > .name-icon {
+								flex-direction: row;
+								justify-content: space-between;
+								overflow-y: visible;
+
+								& > .name {
+									font-size: 1rem;
+									line-height: 1rem;
+									text-wrap: nowrap;
+									text-overflow: ellipsis;
+									overflow-y: visible;
+								}
+
+								& > .icon {
+									width: 1rem;
+									height: 1rem;
+									aspect-ratio: 1;
+								}
+							}
+
+							& > .quantity {
+								font-size: 1rem;
+								line-height: 1rem;
+								text-align: right;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

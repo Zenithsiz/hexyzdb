@@ -1,0 +1,25 @@
+[package]
+name         = "hexyzdb-web-backend"
+version      = "0.1.0"
+edition      = "2024"
+authors      = { workspace = true }
+description  = "hexyzdb backend"
+license-file = { workspace = true }
+
+[package.metadata.deb]
+maintainer-scripts = "debian/"
+systemd-units      = { enable = false }
+depends            = []
+
+[dependencies]
+
+app-error    = { workspace = true }
+axum         = { features = ["macros"], workspace = true }
+serde        = { features = ["derive"], workspace = true }
+tokio        = { features = ["full"], workspace = true }
+toml         = { workspace = true }
+tracing      = { workspace = true }
+zutil-logger = { workspace = true }
+
+[lints]
+workspace = true

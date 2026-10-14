@@ -1,0 +1,34 @@
+rule backend_run {
+	exec {
+		cwd "hexyzdb-web-backend/";
+		args "cargo" "watch"
+			"-x" "run -p hexyzdb-web-backend";
+	};
+}
+
+rule backend_build {
+	exec "cargo" "build"
+		"--release"
+		"--target" "x86_64-unknown-linux-musl"
+		"--package" "hexyzdb-web-backend";
+}
+
+rule backend_deploy {
+	dep rule backend_build;
+
+	exec {
+		stdout deb_path;
+		args "cargo" "deb"
+			"--package" "hexyzdb-web-backend"
+			"--target" "x86_64-unknown-linux-musl"
+			"--no-build";
+	};
+
+	exec {
+		stdout deb;
+		args "basename" deb_path;
+	};
+
+	exec "scp" deb_path "{remote}:{remote_deb_path}/";
+	exec "ssh" remote "dpkg -i '{remote_deb_path}/{deb}' && systemctl daemon-reload && systemctl restart hexyzdb-web-backend";
+}

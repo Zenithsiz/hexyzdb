@@ -1,0 +1,4 @@
+# TODO: Use `target.wasm32-unknown-unknown.target.release` once it works, as
+#       this applies to `dev` builds too, unfortunately
+[target.wasm32-unknown-unknown]
+rustflags = ["-Cembed-bitcode=true", "-Clto=true", "-Copt-level=s"]

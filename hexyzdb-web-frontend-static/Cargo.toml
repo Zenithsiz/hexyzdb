@@ -1,0 +1,19 @@
+[package]
+name    = "hexyzdb-web-frontend-static"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+app-error          = { workspace = true }
+clap               = { features = ["derive"], workspace = true }
+dhexyzf-build-data = { workspace = true }
+image              = { workspace = true }
+serde              = { workspace = true }
+serde_json         = { workspace = true }
+toml               = { workspace = true }
+tracing            = { workspace = true }
+zutil-logger       = { workspace = true }
+
+[lints]
+workspace = true

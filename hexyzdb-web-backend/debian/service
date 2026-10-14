@@ -1,0 +1,18 @@
+[Unit]
+Description=hexyzdb web backend
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hexyzdb-web-backend
+WorkingDirectory=/var/lib/hexyzdb
+Restart=on-failure
+Environment="XDG_CONFIG_HOME=/etc"
+Environment="XDG_CACHE_HOME=/var/cache"
+Environment="XDG_DATA_HOME=/var/lib"
+User=hexyzdb
+Group=hexyzdb
+
+[Install]
+WantedBy=multi-user.target

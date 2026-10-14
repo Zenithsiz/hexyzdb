@@ -1,0 +1,31 @@
+[package]
+name    = "hexyzdb-web-frontend"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+dhexyzf-build-data = { workspace = true }
+
+app-error                = { workspace = true }
+console_error_panic_hook = { workspace = true }
+derive_more              = { features = ["full"], workspace = true }
+dynatos-builder          = { workspace = true }
+dynatos-loadable         = { workspace = true }
+dynatos-reactive         = { workspace = true }
+dynatos-web              = { workspace = true }
+dynatos-web-reactive     = { workspace = true }
+dynatos-web-router       = { workspace = true }
+dynatos-web-title        = { workspace = true }
+extend                   = { workspace = true }
+itertools                = { workspace = true }
+reqwest                  = { features = ["json"], workspace = true }
+tracing                  = { features = ["max_level_trace", "release_max_level_info"], workspace = true }
+tracing-subscriber       = { workspace = true }
+tracing-web              = { workspace = true }
+url                      = { workspace = true }
+web-sys                  = { workspace = true }
+zutil-cloned             = { workspace = true }
+
+[lints]
+workspace = true

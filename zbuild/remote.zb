@@ -1,0 +1,8 @@
+# Remote host for deployment
+alias remote = "root@filipejr.com";
+
+# Remote path for deploying the deb package.
+alias remote_deb_path = "/root/packages";
+
+# Remote path for deploying the static html
+alias remote_www_path = "/home/hexyzdb/www";
