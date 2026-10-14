@@ -12,13 +12,13 @@ use {
 
 #[derive(Debug)]
 pub struct Data {
-	pub weapons: LoadableSignal<WeaponsLoadable>,
-	pub items:   LoadableSignal<ItemsLoadable>,
-	pub enemies: LoadableSignal<EnemiesLoadable>,
+	pub weapons: LoadableSignal<WeaponsLoader>,
+	pub items:   LoadableSignal<ItemsLoader>,
+	pub enemies: LoadableSignal<EnemiesLoader>,
 }
 
 impl Data {
-	#[define_opaque(WeaponsLoadable, ItemsLoadable, EnemiesLoadable)]
+	#[define_opaque(WeaponsLoader, ItemsLoader, EnemiesLoader)]
 	pub fn new(ctx: &DynatosWebCtx) -> Self {
 		#[cloned(ctx)]
 		let weapons = LoadableSignal::new(move || {
@@ -46,9 +46,9 @@ impl Data {
 	}
 }
 
-pub type WeaponsLoadable = impl Loader<Output = Result<Weapons, AppError>>;
-pub type ItemsLoadable = impl Loader<Output = Result<Items, AppError>>;
-pub type EnemiesLoadable = impl Loader<Output = Result<Enemies, AppError>>;
+pub type WeaponsLoader = impl Loader<Output = Result<Weapons, AppError>>;
+pub type ItemsLoader = impl Loader<Output = Result<Items, AppError>>;
+pub type EnemiesLoader = impl Loader<Output = Result<Enemies, AppError>>;
 
 async fn load_weapons(ctx: &DynatosWebCtx) -> Result<Weapons, AppError> {
 	let location = ctx.store().get::<LocationSignal>();
