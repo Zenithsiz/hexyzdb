@@ -41,14 +41,10 @@ a {
 .app {
 	--padding: 0.2rem;
 
-	--header-ratio: 0.1;
-	--sidebar-ratio: 0.15;
-
 	--background-color: #000000c0;
 
 	& > .header {
-		flex-grow: calc(var(--header-ratio) / (1 - var(--header-ratio)));
-
+		height: 10%;
 		flex-direction: row;
 
 		background-color: var(--background-color);
@@ -62,18 +58,21 @@ a {
 	}
 
 	& > .body {
+		height: 90%;
 		flex-direction: row;
 
 		& > .sidebar {
-			flex-grow: calc(var(--sidebar-ratio) / (1 - var(--sidebar-ratio)));
-
+			width: 15%;
 			background-color: var(--background-color);
 			background-clip: content-box;
 
 			padding: var(--padding);
+
+			line-height: 1.5;
 		}
 
 		& > .content {
+			width: 85%;
 			background-color: var(--background-color);
 			background-clip: content-box;
 
